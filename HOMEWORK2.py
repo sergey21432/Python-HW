@@ -1,12 +1,14 @@
+from fractions import Fraction
 
 # Задача 1. Напишите программу, которая принимает на вход вещественное или целое число и показывает сумму его цифр. Через строку нельзя решать.
 # *Пример:*
 # - 6782 -> 23
 # - 0,56 -> 11
+
 print('task1')
 try:
-    number = abs(float(input('Enter a number: ')))
-    while (round(number%1,10)!=0):
+    number = abs(Fraction(input('Enter a number: ')))
+    while (number%1!=0):
         number *=10
     sum_digit = 0
     int_number = int(number)
