@@ -33,7 +33,7 @@ try:
     x= float(input('Enter a value X: '))
     y = float(input('Enter a value Y: '))
     if (x == 0): print("X")
-    elif (y == 0): print("Y") 
+    elif (y == 0): print("Y")
     elif (x == 0 and y == 0): print("0")
     elif (y > 0):
         if (x > 0): print("1")
@@ -86,8 +86,8 @@ try:
         print(x+y)
     elif (str_operator == '-'):
         print(x-y)
-    elif (str_operator in arr_div): 
-        if  y == 0: print('Деление на 0!') 
+    elif (str_operator in arr_div):
+        if  y == 0: print('Деление на 0!')
         elif str_operator == arr_div[0]: print(round(x/y,1))
         elif str_operator == arr_div[1]: print(round(x%y,1))
         elif str_operator == arr_div[2]: print(round(x//y,1))
@@ -101,13 +101,42 @@ except: print('Entered incorrect data')
 
 
 # Задача 5 VERY HARD SORT необязательная
-
 # Задайте двумерный массив из целых чисел. Количество строк и столбцов задается с клавиатуры. Отсортировать элементы по возрастанию слева направо и сверху вниз.
-
 # Например, задан массив:
 # 1 4 7 2
 # 5 9 10 3
-
 # После сортировки
 # 1 2 3 4
 # 5 7 9 10
+
+import random
+print('\ntask_5')
+
+try:
+    ncol = int(input('Enter a number columns: '))
+    nrow = int(input('Enter a number rows: '))
+    arr_rows = []
+    for _ in range(nrow):
+        arr_row = []
+        for _ in range(ncol):
+            arr_row.append(random.randint(1, 100))
+        arr_rows.append(arr_row)
+    print(arr_rows)
+
+    for i in range(nrow):
+        arr_rows[i] = sorted(arr_rows[i])
+    print(arr_rows)
+
+    i=0
+    while (i != (nrow-1)):
+        for _ in range(ncol):
+            if arr_rows[i+1][0] < arr_rows[i][ncol-1]:
+                temp = arr_rows[i][ncol-1]
+                arr_rows[i][ncol-1] = arr_rows[i+1][0]
+                arr_rows[i+1][0] = temp
+                arr_rows[i+1] = sorted(arr_rows[i+1])
+                arr_rows[i] = sorted(arr_rows[i])
+        i += 1
+    print(arr_rows)
+except:
+    print('Entered incorrect data')
